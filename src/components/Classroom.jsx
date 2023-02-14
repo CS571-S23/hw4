@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Container, Form, Row } from "react-bootstrap";
 
 const Classroom = () => {
     return <div>
@@ -12,7 +12,11 @@ const Classroom = () => {
             <br />
             <Button variant="neutral">Reset Search</Button>
         </Form>
-        { /* TODO Students go here! */ }
+        <Container fluid>
+            <Row>
+                { /* TODO Students go here! */ }
+            </Row>
+        </Container>
     </div>
 
 }

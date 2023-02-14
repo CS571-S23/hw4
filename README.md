@@ -1,6 +1,6 @@
 # CS571-S23 HW04: Badger Book (React!)
 
-Welcome to Badger Book (React)! Classroom introductions scale in O(n) time, so in this assignment we will speed up that process! In HW1, we collected JSON data about you; in HW3 we implemented Badger Book using vanilla HTML, CSS, and JS; and in this assignment, you will create Badger Book as a React App. Just like in HW3, you'll fetch data from the API, present it on a webpage, and provide search functionality to speed up the introduction process! Because this covers the fundamentals of React, *there is no design aspect to this assignment*.
+Welcome to Badger Book -- React Edition! In HW1, we collected JSON data about you; in HW3 we implemented Badger Book using vanilla HTML, CSS, and JS; and in this assignment, you will create Badger Book as a React App. Just like in HW3, you'll fetch data from the API, present it on a webpage, and provide search functionality to speed up the introduction process! Because this covers the fundamentals of React, *there is no design aspect to this assignment*.
 
 **Note:** Steps 1-4 can be completed following Tuesday's lecture; steps 5 and 6 can be completed following Thursday's lecture.
 
@@ -24,7 +24,7 @@ The two components you will be working on are located in the `components` folder
 ### 1. Fetch Student Data
 
 In `Classroom.jsx`, create a React state variable that will hold the array of student data. Then, fetch the student data from `https://cs571.org/s23/hw4/api/students` *on page load* and save it to this React state variable. Note three things...
- 1. You'll likely need to use the React hooks `useEffect` and `useState`
+ 1. You'll likely need to use the React hooks `useEffect` and `useState`.
  2. This is the same data from the HW3 API *except* an additional unique "id" has been added to each student.
  3. Like HW3, this request requires a `X-CS571-ID` header specifying your unique Badger ID.
  
@@ -38,13 +38,15 @@ After fetching this data, `console.log` the contents of this array.
 
 With this data, display the students' names on the webpage. Because this is React, we should **not** use `document` or `innerHTML`; we should use JSX components!
 
+In `Classroom.jsx`, you will want to display a `Student` component for each student, passing down props of the student's data. You must display the student's data using the `Student` component.
+
 Furthermore, make sure to specify a unique `key` for each student; you should use the student's ID as the key. You should make sure that you are **not** getting an error saying `each child in a list should have a unique "key" prop.` in your browser's console log, you will lose points!
 
 ![Step 2: Displaying Student Names](figures/step2.png)
 
 ### 3. Formatting Student Data
 
-Like before, this "works"... but the formatting is hard to read. Use [React-Bootstrap's grid system](https://react-bootstrap.github.io/layout/grid/) so that...
+This "works"... but there is a lot of wasted space on large devices. In `Classroom.jsx`, use [React-Bootstrap's grid system](https://react-bootstrap.github.io/layout/grid/) so that...
  - 1 column of students is shown on `xs` devices
  - 2 columns of students is shown on `sm` devices
  - 3 columns of students is shown on `md` devices
@@ -52,8 +54,6 @@ Like before, this "works"... but the formatting is hard to read. Use [React-Boot
  - 6 columns of students is shown on `xl` devices
 
 You can re-size your browser window to test this.
-
-**Note:** You don't need to install Bootstrap or React-Bootstrap; you just need to use it! I have installed it for you already.
 
 ![Step 3: Formatting Student Data](figures/step3.png)
 
@@ -76,9 +76,9 @@ Furthermore, make sure to specify a unique `key` for each interest; you can assu
 
 With all of the data being displayed, we need to provide the user with a way to narrow down their results. Implement search functionality so that a user may search by name, major, and interests with results appearing **as they type**  -- *there is no search button*. Only students that match the search criteria should be displayed.
 
-**Hint**: You will likely need to create a React state variable for each of the search terms to control their input. Then, you can use `useEffect` to trigger a function whenever these search terms change.
+**Hint**: You will likely need to create a React state variable for each of the search terms to control their input in `Classroom.jsx`. Then, you can use `useEffect` to trigger a function whenever these search terms change. You may also choose to introduce another React state variable such as `shownStudents` in addition to what you did in Step 1.
 
-The following are requirements of the search functionality (the same as HW3)...
+How you implement this in React is up to you, but the following are requirements of the search functionality (the same as HW3)...
  - search terms are case-insensitive, e.g. searching "cat" should yield results with "cAT"
  - search terms are substrings, e.g. "olo" should yield results with "color"
  - search terms are AND expressions, e.g. searching for a name of "Cole", a major of "Computer Science", and an interest of "coffee" should only yield Coles studying computer science who are interested in coffee
@@ -95,7 +95,7 @@ I would *encourage you* but not *require you* to use declarative over imperative
 
 ### 6. Reset Search
 
-Add an `onClick` handler so that when the user clicks the "Reset Search" button, the search term fields should be cleared and all students should be displayed.
+In `Classroom.jsx`, add an `onClick` handler so that when the user clicks the "Reset Search" button, the search term fields should be cleared and all students should be displayed.
 
 ![Step 6: Reset Search](figures/step6.png)
 
